@@ -94,11 +94,14 @@ function CharacterStats(charStats) {
   // destroy() = this.GameObject.destroy???
 }
 
+
 function Humanoid(humanoidChar) {
   this.team = humanoidChar.team;
   this.weapons = humanoidChar.weapons;
   this.language = humanoidChar.language;
 
+
+// todo delete comments if you do not need them in the class / prototype when completed assignment
 //   this.createdAt = GameObject.prototype.createdAt;
 //   this.dimensions = GameObject.prototype.dimensions;
 
@@ -108,9 +111,28 @@ function Humanoid(humanoidChar) {
   //  // destroy() = this.CharStats.destroy??? proto???
   //  // inherit takeDamage() from CharacterStats
   //  // this.takeDamage() = CharacterStats.proto.takeDamage();???
+// todo delete comments if you do not need them in the class / prototype when completed assignment
 
   // }
 }
+Humanoid.prototype = Object.create(CharacterStats.prototype);
+Humanoid.prototype.constructor = Humanoid;
+
+// the way it was before the humanoid was creating the correct information 
+
+/*
+right we have undefined propeteries that are not relateing to our humanoid proto // right for wich character so I can look ALL OF THEMy
+ou right, Thats what I have been trying to get the whole time so it will not be undfined and call the correct not anymore...
+
+
+you said swordsman was correct
+and mage and archer...
+so not all of them
+all the properties like team weapons and language worked before
+right and they are not u
+*/
+
+
 console.log(Humanoid);
 console.log(CharacterStats);
 console.log(GameObject);
@@ -118,6 +140,6 @@ console.log(mage.createdAt); // Today's date
 console.log(archer.dimensions); // { length: 1, width: 2, height: 4 }
 console.log(swordsman.healthPoints); // 15
 console.log(mage.name); // Bruce
-console.log(swordsman.team); // The Round Table
-console.log(mage.weapons); // Staff of Shamalama
-console.log(archer.language); // Elvish
+console.log(swordsman.team); // The Round Table //! this is correct
+console.log(mage.weapons); // Staff of Shamalama //! this is correct
+console.log(archer.language); // Elvish //! this is correct
