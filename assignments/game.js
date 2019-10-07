@@ -94,7 +94,6 @@ function CharacterStats(charStats) {
   // destroy() = this.GameObject.destroy???
 }
 
-
 function Humanoid(humanoidChar) {
   this.team = humanoidChar.team;
   this.weapons = humanoidChar.weapons;
