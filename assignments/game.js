@@ -56,29 +56,28 @@ const villain = new Humanoid({
   language: ["Common Tongue", "Hidden"]
 });
 
-const hero = new Humanoid({
-  createdAt: new Date(),
-  dimensions: {
-    length: 2,
-    width: 2,
-    height: 3
-  },
-  healthPoints: 15,
-  name: "Paulyboy",
-  team: "Say10",
-  weapons: ["Short Sword", "Longbow", "Shield"]
-});
+// const bestFriend = new Hero({
+//   createdAt: new Date(),
+//   dimensions: {
+//     length: 2,
+//     width: 2,
+//     height: 3
+//   },
+//   healthPoints: 15,
+//   name: "Paulyboy",
+//   team: "Say10",
+//   weapons: ["Short Sword", "Longbow", "Shield"]
+// });
 
 function GameObject(attributes) {
   this.createdAt = attributes.createdAt;
   this.name = attributes.name;
   this.dimensions = attributes.dimensions;
 }
+
 GameObject.prototype.destroy = function() {
-  return `${this.name} dies slowly...`;
+  console.log(`${this.name} dies slowly...`);
 };
-// this.prototype.createdAt = charObj.createdAt;
-// this.prototype.dimensions = charObj.dimensions;
 
 function CharacterStats(attributes) {
   this.healthPoints = attributes.healthPoints;
@@ -86,8 +85,10 @@ function CharacterStats(attributes) {
 }
 
 CharacterStats.prototype = Object.create(GameObject.prototype);
+// CharacterStats.prototype.constructor = CharacterStats;
+
 CharacterStats.prototype.takeDamage = function() {
-  return `${this.name} took damage!`;
+  return console.log(`${this.name} took damage!`);
 };
 
 function Humanoid(attributes) {
@@ -97,6 +98,7 @@ function Humanoid(attributes) {
   CharacterStats.call(this, attributes);
 }
 Humanoid.prototype = Object.create(CharacterStats.prototype);
+// Humanoid.prototype.constructor = Humanoid;
 
 Humanoid.prototype.greet = function() {
   return `${this.name} offers a greeting in ${this.language}`;
@@ -112,3 +114,51 @@ console.log(mage.name); // Bruce
 console.log(swordsman.team); // The Round Table
 console.log(mage.weapons); // Staff of Shamalama
 console.log(archer.language); // Elvish
+
+// * Create Villain and Hero constructor functions that inherit from the Humanoid constructor function.
+// * Give the Hero and Villains different methods that could be used to remove health points from objects which could result in destruction if health gets to 0 or drops below 0;
+// * Create two new objects, one a villain and one a hero and fight it out with methods!
+
+function Hero(attributes) {
+  Humanoid.call(this, attributes);
+}
+Hero.prototype = Object.create(Humanoid.prototype);
+// Hero.prototype.constructor = Hero;
+
+Hero.prototype.removeHp = function() {
+  this.healthPoints--;
+  return this.healthPoints > 0
+    ? console.log(`${this.name} lost health. HP: ${this.healthPoints}`)
+    : this.destroy();
+};
+
+const bestFriend = new Hero({
+  createdAt: new Date(),
+  dimensions: {
+    length: 2,
+    width: 2,
+    height: 3
+  },
+  healthPoints: 15,
+  name: "Paulyboy",
+  team: "Say10",
+  weapons: ["Short Sword", "Longbow", "Shield"]
+});
+
+//* console.log(`${this.name} was removed from the game in the large pit of Lava from the Manicores' lair`)
+bestFriend.removeHp();
+bestFriend.removeHp();
+bestFriend.removeHp();
+bestFriend.removeHp();
+bestFriend.removeHp();
+bestFriend.removeHp();
+bestFriend.removeHp();
+bestFriend.removeHp();
+bestFriend.removeHp();
+bestFriend.removeHp();
+bestFriend.removeHp();
+bestFriend.removeHp();
+bestFriend.removeHp();
+bestFriend.removeHp();
+bestFriend.removeHp();
+// console.log(bestFriend.healthPoints);

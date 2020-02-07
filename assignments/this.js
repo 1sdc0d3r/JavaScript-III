@@ -16,7 +16,6 @@ function sayHello(name) {
   console.log("Hello " + name);
   //   console.log(this);
 }
-
 sayHello("Jimmy");
 
 // Principle 2
